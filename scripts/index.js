@@ -18,11 +18,21 @@ let winningTickets = [
 window.onload = loadWinningTicketsTable();
 
 function loadWinningTicketsTable() {
-    let tableBody = document.getElementById("winningTicketsTblBody");
+    const tableBody = document.getElementById("winningTicketsTblBody");
 
-    
+    for (let ticket of winningTickets) {
+        buildTicketRow(tableBody, ticket);
+    }
 }
 
-function buildTicketRow(tbody, theTicket) {
+function buildTicketRow(tbody, ticket) {
+    let row = tbody.insertRow();
+    let tdTicketNumber = row.insertCell(0);
+    tdTicketNumber.innerHTML = ticket.tixNum;
 
+    let tdPrize = row.insertCell(1);
+    tdPrize.innerHTML = "$" + ticket.prize.toFixed(2);
+
+    let tdExpires = row.insertCell(2);
+    tdExpires.innerHTML = ticket.expires;
 }
